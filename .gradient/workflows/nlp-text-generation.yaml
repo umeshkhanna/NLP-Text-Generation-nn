@@ -16,11 +16,6 @@ on:
   github:
     branches:
       only: main
-inputs:
-  c4-dataset:
-    type: dataset
-    with:
-      ref: dsg8oeb9oig0261
 
 jobs:
   cloneRepo:
@@ -39,7 +34,6 @@ jobs:
       instance-type: P4000
     needs:
       - cloneRepo
-      - c4-dataset
     inputs:
       repo: cloneRepo.outputs.repo
     outputs:
