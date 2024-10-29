@@ -17,6 +17,12 @@ on:
     branches:
       only: main
 
+inputs:
+  data:
+    type: dataset
+    with:
+      ref: c4-dataset
+
 jobs:
 
   cloneRepo:
@@ -32,11 +38,11 @@ jobs:
 
   generateText:
     resources:
-      instance-type: C5
+      instance-type: P4000
     needs:
       - cloneRepo
     inputs:
-      repo: cloneRepo.outputs.repo
+      data: workflow.inputs.data
     outputs:
       generatedText:
         type: dataset
@@ -47,10 +53,19 @@ jobs:
       script: |-
         cp -R /inputs/repo /nlp
         cd /nlp
+        pip3 install datasets
+        pip3 install tqdm
+        pip3 install pandas
+        pip3 install sentencepiece
         pip3 install -U transformers
-        python3 nlp_text_generation.py
-        mv output.txt /outputs/generatedText
-        ls "-aFlR" /outputs/generatedText
+        pip3 install evaluate
+        pip3 install rouge_score
+        pip3 install -U scikit-learn
+        pip3 install -U scipy
+        pip3 install -U matplotlib
+        python3 gecv1.py
+        mv t5_gec_model_v1 /outputs/t5_gec_model_v1
+        ls "-aFlR" /outputs/t5_gec_model_v1
       image: paperspace/transformers-gpu:0.4.0
 
 # Appendix: Extra details
