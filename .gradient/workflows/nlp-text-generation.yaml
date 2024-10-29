@@ -17,12 +17,6 @@ on:
     branches:
       only: main
 
-inputs:
-  data:
-    type: dataset
-    with:
-      ref: dsg8oeb9oig0261
-
 jobs:
   cloneRepo:
     resources:
@@ -37,7 +31,10 @@ jobs:
 
   generateText:
     inputs:
-      data: workflow.inputs.data
+      generatedText:
+        type: dataset
+        with:
+          ref: c4-dataset
       repo: cloneRepo.outputs.repo
     resources:
       instance-type: P4000
