@@ -16,7 +16,6 @@ on:
   github:
     branches:
       only: main
-
 inputs:
   c4-dataset:
     type: dataset
@@ -27,8 +26,6 @@ jobs:
   cloneRepo:
     resources:
       instance-type: C4
-    inputs:
-      c4-dataset: workflow.inputs.c4-dataset
     outputs:
       repo:
         type: volume
@@ -42,9 +39,9 @@ jobs:
       instance-type: P4000
     needs:
       - cloneRepo
+      - c4-dataset
     inputs:
       repo: cloneRepo.outputs.repo
-      c4-dataset: cloneRepo.inputs.c4-dataset 
     outputs:
       generatedText:
         type: dataset
