@@ -31,10 +31,6 @@ jobs:
 
   generateText:
     inputs:
-      generatedText:
-        type: dataset
-        with:
-          ref: c4-dataset
       repo: cloneRepo.outputs.repo
     resources:
       instance-type: P4000
