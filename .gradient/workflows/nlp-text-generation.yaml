@@ -31,6 +31,7 @@ jobs:
 
   generateText:
     inputs:
+      data: workflow.inputs.c4-dataset
       repo: cloneRepo.outputs.repo
     resources:
       instance-type: P4000
