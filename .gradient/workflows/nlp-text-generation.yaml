@@ -17,11 +17,12 @@ on:
     branches:
       only: main
 
+
 inputs:
-  data:
+  c4-dataset:
     type: dataset
     with:
-      ref: c4-dataset
+      ref: dsg8oeb9oig0261
 
 jobs:
 
@@ -42,7 +43,7 @@ jobs:
     needs:
       - cloneRepo
     inputs:
-      data: workflow.inputs.data
+      data: workflow.inputs.c4-dataset
     outputs:
       generatedText:
         type: dataset
