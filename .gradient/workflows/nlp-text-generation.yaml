@@ -17,6 +17,11 @@ on:
     branches:
       only: main
 
+inputs:
+  c4-dataset:
+    type: dataset
+    with:
+      ref: dsg8oeb9oig0261
 jobs:
   cloneRepo:
     resources:
@@ -30,12 +35,13 @@ jobs:
       ref: context.event.github.ref
 
   generateText:
+    inputs:
+      repo: cloneRepo.outputs.repo
+      data: workflow.inputs.data
     resources:
       instance-type: P4000
     needs:
       - cloneRepo
-    inputs:
-      repo: cloneRepo.outputs.repo
     outputs:
       generatedText:
         type: dataset
