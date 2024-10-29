@@ -17,6 +17,12 @@ on:
     branches:
       only: main
 
+inputs:
+  data:
+    type: dataset
+    with:
+      ref: dsg8oeb9oig0261
+
 jobs:
 
   cloneRepo:
