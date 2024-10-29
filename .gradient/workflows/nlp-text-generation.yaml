@@ -17,7 +17,6 @@ on:
     branches:
       only: main
 
-
 inputs:
   c4-dataset:
     type: dataset
@@ -43,7 +42,7 @@ jobs:
     needs:
       - cloneRepo
     inputs:
-      data: workflow.inputs.c4-dataset
+      repo: cloneRepo.outputs.repo
     outputs:
       generatedText:
         type: dataset
