@@ -18,7 +18,7 @@ on:
       only: main
 
 inputs:
-  data:
+  c4-dataset:
     type: dataset
     with:
       ref: dsg8oeb9oig0261
