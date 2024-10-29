@@ -18,7 +18,7 @@ on:
       only: main
 
 inputs:
-  c4-dataset:
+  data:
     type: dataset
     with:
       ref: dsg8oeb9oig0261
@@ -37,7 +37,7 @@ jobs:
 
   generateText:
     inputs:
-      data: workflow.inputs.c4-dataset
+      data: workflow.inputs.data
       repo: cloneRepo.outputs.repo
     resources:
       instance-type: P4000
