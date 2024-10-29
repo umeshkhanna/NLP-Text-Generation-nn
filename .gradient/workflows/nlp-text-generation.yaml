@@ -16,11 +16,7 @@ on:
   github:
     branches:
       only: main
-inputs:
-  c4-dataset:
-    type: dataset
-    with:
-      ref: dsg8oeb9oig0261
+
 jobs:
   cloneRepo:
     resources:
