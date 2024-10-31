@@ -36,6 +36,12 @@ def set_seed(seed):
 
 set_seed(42)
 
+import os
+print(os.path.dirname(__file__))
+
+import shutil
+shutil.unpack_archive('c4_200m_550k.csv.zip', '/nlp')
+
 pd.set_option('display.max_colwidth', None)
 df = pd.read_csv('c4_200m_550k.csv')
 df.shape
